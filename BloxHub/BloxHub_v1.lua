@@ -2,6 +2,18 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local player = game.Players.LocalPlayer
 
+local function Sea1()
+	
+end
+
+local function Sea2()
+	
+end
+
+local function Sea3()
+	
+end
+
 local function BloxHub()
 	local supportGame = false
 	local placeId = game.PlaceId
@@ -15,6 +27,19 @@ local function BloxHub()
 	elseif placeId == 7449423635 then
 		Sea3 = true
 		supportGame = true
+	end
+		
+	if not supportGame then
+		Rayfield:Notify({
+			Title = "Sem suporte neste jogo",
+			Content = "Sem suporte neste jogo",
+			Duration = 6.5,
+			Image = 128942511228879,
+		})
+		
+		wait(7)
+		Rayfield:SetVisibility(false)
+		Rayfield:Destroy()
 	end
 
 	local Window = Rayfield:CreateWindow({
@@ -54,6 +79,13 @@ local function BloxHub()
 		}
 	})
 	
+	if Sea1 and not Sea2 and not Sea3 then -- Sea 1
+		Sea1()
+	elseif not Sea1 and Sea2 and not Sea3 then -- Sea 2
+		Sea2()
+	elseif not Sea1 and not Sea2 and Sea3 then -- Sea 3
+		Sea3()
+	end
 end
 
 BloxHub()
