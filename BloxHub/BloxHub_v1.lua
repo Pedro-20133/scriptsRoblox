@@ -6,13 +6,13 @@ local function BloxHub()
 	local supportGame = false
 	local placeId = game.PlaceId
 	
-	if placeId == 0 then
+	if placeId == 2753915549 then
 		Sea1 = true
 		supportGame = true
-	elseif placeId == 1 then
+	elseif placeId == 4442272183 then
 		Sea2 = true
 		supportGame = true
-	elseif placeId == 2 then
+	elseif placeId == 7449423635 then
 		Sea3 = true
 		supportGame = true
 	end
@@ -55,3 +55,5 @@ local function BloxHub()
 	})
 	
 end
+
+BloxHub()
