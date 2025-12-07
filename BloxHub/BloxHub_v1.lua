@@ -2,16 +2,16 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local player = game.Players.LocalPlayer
 
-local function Sea1()
+local function Sea1(Window)
 	
 end
 
-local function Sea2()
+local function Sea2(Window)
 	
 end
 
-local function Sea3()
-	
+local function Sea3(Window)
+	error("teste")
 end
 
 local function BloxHub()
@@ -80,11 +80,56 @@ local function BloxHub()
 	})
 	
 	if Sea1 and not Sea2 and not Sea3 then -- Sea 1
-		Sea1()
+		local success = pcall(function()
+			Sea1(Window)
+		end)
+
+		if not success then
+			Rayfield:Notify({
+				Title = "Erro na execução do script",
+				Content = "Erro na execução do script, re-execute o script",
+				Duration = 6.5,
+				Image = 128942511228879,
+			})
+
+			wait(7)
+			Rayfield:SetVisibility(false)
+			Rayfield:Destroy()
+		end
 	elseif not Sea1 and Sea2 and not Sea3 then -- Sea 2
-		Sea2()
+		local success = pcall(function()
+			Sea2(Window)
+		end)
+
+		if not success then
+			Rayfield:Notify({
+				Title = "Erro na execução do script",
+				Content = "Erro na execução do script, re-execute o script",
+				Duration = 6.5,
+				Image = 128942511228879,
+			})
+
+			wait(7)
+			Rayfield:SetVisibility(false)
+			Rayfield:Destroy()
+		end
 	elseif not Sea1 and not Sea2 and Sea3 then -- Sea 3
-		Sea3()
+		local success = pcall(function()
+			Sea3(Window)
+		end)
+		
+		if not success then
+			Rayfield:Notify({
+				Title = "Erro na execução do script",
+				Content = "Erro na execução do script, re-execute o script",
+				Duration = 6.5,
+				Image = 128942511228879,
+			})
+
+			wait(7)
+			Rayfield:SetVisibility(false)
+			Rayfield:Destroy()
+		end
 	end
 end
 
