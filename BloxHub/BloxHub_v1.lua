@@ -67,7 +67,7 @@ local function BloxHub()
 			RememberJoins = true -- Set this to false to make them join the discord every time they load it up
 		},
 
-		KeySystem = true, -- Set this to true to use our key system
+		KeySystem = false, -- Set this to true to use our key system
 		KeySettings = {
 			Title = "Blox Hub KeySystem",
 			Subtitle = "Key System",
@@ -78,6 +78,13 @@ local function BloxHub()
 			Key = {"FREE_BloxHubKeyPedrin"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
 		}
 	})
+	
+	-- Default Tabs
+	-- Home Tab
+	local HomeTab = Window:CreateTab("Home Tab", 83941346515126)
+	local title = HomeTab:CreateLabel("Home Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+	
+	
 	
 	if Sea1 and not Sea2 and not Sea3 then -- Sea 1
 		local success = pcall(function()
