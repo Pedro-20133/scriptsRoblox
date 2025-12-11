@@ -2,16 +2,79 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local player = game.Players.LocalPlayer
 
+local function setup()
+	-- Bount/Honor
+	local player = game.Players.LocalPlayer
+	local MarineRecruiter = game.Workspace.NPCs:WaitForChild("Marine Recruiter")
+	
+	
+end
+
 local function Sea1(Window)
+	local HomeTab = Window:CreateTab("Home Tab", 83941346515126)
+	local title = HomeTab:CreateLabel("Home Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false)
+
+	local events = {}
+	local eventsLbl = HomeTab:CreateLabel("Eventos: ...", nil, Color3.fromRGB(157, 156, 159), false)
+	local fullMoon = HomeTab:CreateLabel("Full Moon: not found", nil, Color3.fromRGB(157, 156, 159), false)
+	local saw = HomeTab:CreateLabel("Saw: not found", nil, Color3.fromRGB(157, 156, 159), false)
+	local grayBeard = HomeTab:CreateLabel("Gray Beard: not found", nil, Color3.fromRGB(157, 156, 159), false)
+	
+	local LocalTab = Window:CreateTab("Local Tab", 83941346515126)
+	local title = LocalTab:CreateLabel("Local Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false)
+	
+	local RemoveFog = LocalTab:CreateButton({
+		Name = "Remove Fog",
+		Callback = function()
+			local Lighting = game.Lighting
+			
+			for _, item in pairs(Lighting:GetChildren()) do
+				item:Destroy()
+			end
+		end,
+	})
+	
+	local Set_WalkSpeed = LocalTab:CreateSlider({
+		Name = "Set WalkSpeed",
+		Range = {10, 10000},
+		Increment = 10,
+		Suffix = "Velocity",
+		CurrentValue = 10,
+		Flag = "Set_WalkSpeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		Callback = function(velo)
+			local player = game.Players.LocalPlayer
+			local character = player.Character or player.CharacterAdded:Wait()
+			local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+			humanoid = velo
+		end,
+	})
+	
 	
 end
 
 local function Sea2(Window)
+	local HomeTab = Window:CreateTab("Home Tab", 83941346515126)
+	local title = HomeTab:CreateLabel("Home Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false)
+
+	local events = HomeTab:CreateLabel("Eventos: ...", nil, Color3.fromRGB(157, 156, 159), false)
+	local fullMoon = HomeTab:CreateLabel("Full Moon: not found", nil, Color3.fromRGB(157, 156, 159), false)
 	
+	
+	
+	setup(Window)
 end
 
 local function Sea3(Window)
-	error("teste")
+	local HomeTab = Window:CreateTab("Home Tab", 83941346515126)
+	local title = HomeTab:CreateLabel("Home Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false)
+
+	local events = HomeTab:CreateLabel("Eventos: ...", nil, Color3.fromRGB(157, 156, 159), false)
+	local fullMoon = HomeTab:CreateLabel("Full Moon: not found", nil, Color3.fromRGB(157, 156, 159), false)
+	
+	
+	
+	setup(Window)
 end
 
 local function BloxHub()
@@ -50,7 +113,7 @@ local function BloxHub()
 		ShowText = "Blox Hub", -- for mobile users to unhide rayfield, change if you'd like
 		Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
-		ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+		ToggleUIKeybind = "U", -- The keybind to toggle the UI visibility (string like "U" or Enum.KeyCode)
 
 		DisableRayfieldPrompts = false,
 		DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
@@ -67,7 +130,7 @@ local function BloxHub()
 			RememberJoins = true -- Set this to false to make them join the discord every time they load it up
 		},
 
-		KeySystem = false, -- Set this to true to use our key system
+		KeySystem = true, -- Set this to true to use our key system
 		KeySettings = {
 			Title = "Blox Hub KeySystem",
 			Subtitle = "Key System",
@@ -78,13 +141,6 @@ local function BloxHub()
 			Key = {"FREE_BloxHubKeyPedrin"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
 		}
 	})
-	
-	-- Default Tabs
-	-- Home Tab
-	local HomeTab = Window:CreateTab("Home Tab", 83941346515126)
-	local title = HomeTab:CreateLabel("Home Tab", 83941346515126, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
-	
-	
 	
 	if Sea1 and not Sea2 and not Sea3 then -- Sea 1
 		local success = pcall(function()
