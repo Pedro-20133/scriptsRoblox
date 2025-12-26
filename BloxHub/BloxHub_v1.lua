@@ -1,3 +1,5 @@
+local RunService = game:GetService("RunService")
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local player = game.Players.LocalPlayer
@@ -6,8 +8,11 @@ local function setup()
 	-- Bount/Honor
 	local player = game.Players.LocalPlayer
 	local MarineRecruiter = game.Workspace.NPCs:WaitForChild("Marine Recruiter")
+	local bounty = game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"]
 	
+	local lockConnection
 	
+	print("Bounty: " .. bounty)
 end
 
 local function Sea1(Window)
